@@ -1,6 +1,9 @@
 import './App.css'
+import { Routes, Route, Link } from 'react-router-dom'
+import Login from './pages/Login'
+import Signup from './pages/Signup'
 
-function App() {
+function Landing() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100">
       {/* Navigation Header */}
@@ -9,8 +12,12 @@ function App() {
           <div className="flex justify-between items-center">
             <h1 className="text-2xl font-bold text-indigo-600">Student Portal</h1>
             <div className="space-x-4">
-              <button className="text-gray-700 hover:text-indigo-600 font-medium">Login</button>
-              <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign Up</button>
+              <Link to="/login">
+                <button className="text-gray-700 hover:text-indigo-600 font-medium">Login</button>
+              </Link>
+              <Link to="/signup">
+                <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700">Sign Up</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -109,6 +116,16 @@ function App() {
         </div>
       </footer>
     </div>
+  )
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<Landing />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+    </Routes>
   )
 }
 
